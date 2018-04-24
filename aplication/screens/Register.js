@@ -36,19 +36,19 @@ export default  class Register extends Component {
         this.options = {
             fields: {
                 email:{
-                    help: 'Introduce un email',
-                    error: 'Email incorrecto',
+                    help: 'Please enter an email',
+                    error: 'Incorrect Email',
                     autoCapitalize: 'none'
                 },
                 password: {
-                    help: 'Introduce una contraseña',
-                    error: 'Contraseña Incorrecta',
+                    help: 'Enter a password',
+                    error: 'Incorrect Password',
                     password: true,
                     secureTextEntry: true
                 },
                 password_confirmation: {
-                    help: 'Repite la contraseña',
-                    error: 'Las contraseñas no coinciden',
+                    help: 'Repeat the password',
+                    error: 'The passwords do not match',
                     password: true,
                     secureTextEntry: true
                 }
@@ -64,7 +64,7 @@ export default  class Register extends Component {
             firebase.auth().createUserWithEmailAndPassword(
                 this.validate.email, this.validate.password
             ).then( () => {
-                Toast.showWithGravity('Registro Correcto, Bienvenido', Toast.LONG, Toast.BOTTOM)
+                Toast.showWithGravity('Successful Registration, Welcome', Toast.LONG, Toast.BOTTOM)
             }).catch( error => {
                 Toast.showWithGravity(error.message, Toast.LONG, Toast.BOTTOM)
             })
@@ -78,9 +78,9 @@ export default  class Register extends Component {
     
     render() {
         return (
-            <BackgroundImage source={require('../../assets/images/fondo.jpg')}>
+            <BackgroundImage source={require('../../assets/images/fondo.png')}>
                 <View>
-                    <Card wrapperStyle={{ paddingLeft: 10 }} title="Registro de Usuario" >
+                    <Card wrapperStyle={{ paddingLeft: 10 }} title="User Registration" >
                         <Form 
                             ref="form"
                             type={this.user}
@@ -90,7 +90,7 @@ export default  class Register extends Component {
                         />
                         <AppButton 
                             bgColor="rgba(111, 38, 74, 0.7)"
-                            title="Registrarse"
+                            title="Register"
                             action={this.register.bind(this)}
                             iconName="user-plus"
                             iconColor="#fff"

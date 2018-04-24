@@ -11,8 +11,8 @@ export const Comment = t.struct({
 export const options = {
     fields: {
         rating: {
-            label: 'Puntuacion',
-            help: 'Cual es tu puntuacion del 1 al 5',
+            label: 'Score',
+            help: 'What is your score of 1 to 5',
             template: sliderTemplate,
             config: {
                 step: 1,
@@ -21,8 +21,8 @@ export const options = {
             }
         },
         comment: {
-            label: 'Comentario',
-            placeholder: 'Comentario',
+            label: 'Comment',
+            placeholder: 'Comment',
             multiline: true,
             stylesheet: {
                 ...Form.stylesheet,

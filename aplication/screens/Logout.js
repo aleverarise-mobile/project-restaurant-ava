@@ -7,7 +7,7 @@ export default class Logout extends Component {
     componentDidMount() {
         firebase.auth().signOut()
             .then( () => {
-                Toast.showWithGravity('Sesion cerrada correctamente', Toast.LONG, Toast.BOTTOM)
+                Toast.showWithGravity('Closed session correctly', Toast.LONG, Toast.BOTTOM)
             })
             .catch(error => {
                 Toast.showWithGravity(error.message, Toast.LONG, Toast.BOTTOM)

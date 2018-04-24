@@ -40,7 +40,7 @@ export default  class CommentForm extends Component {
                         }
                     }
                 });
-                Toast.showWithGravity('Comentario publicado!', Toast.LONG, Toast.BOTTOM)
+                Toast.showWithGravity('Comment posted!', Toast.LONG, Toast.BOTTOM)
             });
         }
     }
@@ -52,7 +52,7 @@ export default  class CommentForm extends Component {
     render() {
         const {comment} = this.state;
         return (
-            <Card title="Dános tu opinión" >
+            <Card title="Give us your opinion" >
                 <View>
                     <Form 
                         ref="form"
@@ -65,7 +65,7 @@ export default  class CommentForm extends Component {
 
                 <AppButtom 
                     bgColor="rgba(255, 38, 74, 0.9)"
-                    title="Publicar Comentario"
+                    title="To post a comment."
                     action={this.addComment.bind(this)}
                     iconName="comments"
                     iconColor="#fff"

@@ -35,7 +35,7 @@ const leftIcon = (navigation, icon) => <Icon
 
 const rightIcon = (navigation, icon) => <Icon 
     name={icon}
-    style={{marginLeft: 20}}
+    style={{marginLeft: 20, marginRight: 20}}
     size={30}
     color="white"
     onPress={ () => navigation.navigate('ListRestaurants') }
@@ -46,7 +46,7 @@ const restaurantsScreenStack = StackNavigator(
         ListRestaurants: {
             screen: RestaurantsScreen,
             navigationOptions: ( {navigation} ) => ({
-                title: 'Restaurantes',
+                title: 'Restaurants',
                 drawerIcon: ({ tintColor }) => (<Icon 
                     name="home" size={24} style={{color: tintColor}} />),
                 headerLeft: leftIcon(navigation, 'bars')
@@ -55,7 +55,7 @@ const restaurantsScreenStack = StackNavigator(
         AddRestaurant: {
             screen: AddRestaurantScreen,
             navigationOptions: ({navigation}) => ({
-                title: 'Añadir Restaurante',
+                title: 'Add Restaurant',
                 headerRight: rightIcon(navigation, 'home'),
                 headerLeft: leftIcon(navigation, 'bars')
             })
@@ -63,7 +63,7 @@ const restaurantsScreenStack = StackNavigator(
         DetailRestaurant: {
             screen: DetailRestaurantScreen,
             navigationOptions: ({navigation}) => ({
-                title: 'Detalle del Restaurante',
+                title: 'Detail of the Restaurant',
                 headerRight: rightIcon(navigation, 'home'),
                 headerLeft: leftIcon(navigation, 'bars')
             })
@@ -71,7 +71,7 @@ const restaurantsScreenStack = StackNavigator(
         EditRestaurant: {
             screen: EditRestaurantScreen,
             navigationOptions: ({navigation}) => ({
-                title: 'Editar Restaurante',
+                title: 'Update Restaurant',
                 headerRight: rightIcon(navigation, 'home'),
             })
         }
@@ -84,7 +84,7 @@ const ProfileScreenStack = StackNavigator(
         ProfileScreen: {
             screen: ProfileScreen,
             navigationOptions: ({navigation}) => ({
-                title: 'Perfil',
+                title: 'Profile',
                 drawerIcon: ({ tintColor }) => (<Icon 
                     name="user" size={24} style={{color: tintColor}} />),
                 headerLeft: leftIcon(navigation, 'bars'),
@@ -100,7 +100,7 @@ const logoutScreenStack = StackNavigator(
         LogoutScreen:{
             screen: LogoutScreen,
             navigationOptions: ({ navigation }) => ({
-                title: 'Cerrar Sesión',
+                title: 'Logout',
                 drawerIcon: ({ tintColor }) => (<Icon 
                     name="sign-out" size={24} style={{color: tintColor}} />),
             })

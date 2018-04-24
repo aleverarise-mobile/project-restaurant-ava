@@ -24,13 +24,13 @@ export default class Login extends Component {
         this.options = {
             fields: {
                 email: {
-                    help: 'Introduce tu email',
-                    error: 'Email incorrecto',
+                    help: 'Enter your email address',
+                    error: 'Incorrect Email',
                     autoCapitalize: 'none'
                 },
                 password: {
-                    help: 'Introduce tu contraseña',
-                    error: 'Contraseña incorrecta',
+                    help: 'Enter your password',
+                    error: 'Incorrect Password',
                     password: true,
                     secureTextEntry: true
                 }
@@ -43,13 +43,13 @@ export default class Login extends Component {
         if(validate){
             firebase.auth().signInWithEmailAndPassword(validate.email, validate.password)
                 .then( () => {
-                    Toast.showWithGravity('Bienvenido', Toast.LONG, Toast.BOTTOM)
+                    Toast.showWithGravity('Welcome', Toast.LONG, Toast.BOTTOM)
                 })
                 .catch( (error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     if(errorCode === 'auth/wrong-password'){
-                        Toast.showWithGravity('Contraseña Incorrecta', Toast.LONG, Toast.BOTTOM)
+                        Toast.showWithGravity('Incorrect Password', Toast.LONG, Toast.BOTTOM)
                     }else{
                         Toast.showWithGravity(errorMessage, Toast.LONG, Toast.BOTTOM)
                     }
@@ -59,9 +59,9 @@ export default class Login extends Component {
     
     render() {
         return (
-            <BackgroundImage source={require('../../assets/images/fondo.jpg')}>
+            <BackgroundImage source={require('../../assets/images/fondo.png')}>
                 <View>
-                    <Card wrapperStyle={{ paddingLeft: 10 }} title="Iniciar sesión" >
+                    <Card wrapperStyle={{ paddingLeft: 10 }} title="Log in" >
                         <Form 
                             ref="form"
                             type={this.user}

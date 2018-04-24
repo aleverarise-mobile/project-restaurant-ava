@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BackgroundImage from '../../components/BackgroundImage';
 import PreLoader from '../../components/PreLoader';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { StyleSheet, FlatList, View, ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import * as firebase from 'firebase';
 import { NavigationActions }from 'react-navigation';
@@ -62,7 +62,7 @@ export default  class Restaurants extends Component {
             <ListItem 
                 containerStyle={styles.item}
                 titleStyle={styles.title}
-                title={`${restaurant.name} (Capacidad: ${restaurant.capacity}) `}
+                title={`${restaurant.name} (Capacity: ${restaurant.capacity}) `}
                 onPress={ () => this.restaurantDetail(restaurant) }
                 rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: styles.listIconStyle }}
                 leftIcon={{ name: 'restaurant', type: 'material-icons', style: styles.listIconStyle }}
@@ -79,8 +79,8 @@ export default  class Restaurants extends Component {
 
         if(!restaurants.length){
             return (
-                <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
-                    <RestaurantEmpty text="No hay restaurantes disponibles" />
+                <BackgroundImage source={require('../../../assets/images/fondo.png')}>
+                    <RestaurantEmpty text="There is no restaurants available" />
                     <RestaurantAddButton 
                         addRestaurant={this.addRestaurant.bind(this)} />
                 </BackgroundImage>
@@ -88,13 +88,14 @@ export default  class Restaurants extends Component {
         }
 
         return (
-            <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
-                <FlatList 
-                    data={restaurants}
-                    renderItem={ (data) => this.renderRestaurant(data.item) }
-                    keyExtractor={ (data) => data.id }
-                />
-
+            <BackgroundImage source={require('../../../assets/images/fondo.png')}>
+                <ScrollView>
+                    <FlatList 
+                        data={restaurants}
+                        renderItem={ (data) => this.renderRestaurant(data.item) }
+                        keyExtractor={ (data) => data.id }
+                    />
+                </ScrollView>
                 <RestaurantAddButton 
                     addRestaurant={this.addRestaurant.bind(this)} />
             </BackgroundImage>

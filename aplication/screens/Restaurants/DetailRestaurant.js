@@ -39,7 +39,7 @@ export default class DetailRestaurant extends Component {
     render() {
         const { restaurant } = this.state;
         return (
-            <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
+            <BackgroundImage source={require('../../../assets/images/fondo.png')}>
                 <ScrollView>
                     <Restaurant 
                         goHome={this.goHome.bind(this)}

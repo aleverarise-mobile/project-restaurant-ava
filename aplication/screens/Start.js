@@ -38,31 +38,31 @@ export default class Start extends Component {
             const credentials = firebase.auth.FacebookAuthProvider.credential(token);
             firebase.auth().signInWithCredential(credentials)
                 .catch( error => {
-                    Toast.showWithGravity('Error accediendo con facebook', Toast.LONG, Toast.BOTTOM)
+                    Toast.showWithGravity('Error accessing with facebook', Toast.LONG, Toast.BOTTOM)
                 })
         }else if(type === 'cancel'){
-            Toast.showWithGravity('Inicio de sesion cancelado', Toast.LONG, Toast.BOTTOM)
+            Toast.showWithGravity('Login canceled', Toast.LONG, Toast.BOTTOM)
         }else{
-            Toast.showWithGravity('Error generado', Toast.LONG, Toast.BOTTOM)
+            Toast.showWithGravity('Error Generated', Toast.LONG, Toast.BOTTOM)
         }
     }
 
     render() {
         return (
             <BackgroundImage 
-				source={require('../../assets/images/fondo.jpg')}
+				source={require('../../assets/images/fondo.png')}
 			>
                 <View style={{ justifyContent: 'center', flex: 1 }} >
                     <AppButton 
                         bgColor="#ef693f80"
-                        title="Entrar"
+                        title="Enter"
                         action={this.login.bind(this)}
                         iconName="sign-in"
                         iconColor="#fff"
                     />
                     <AppButton 
                         bgColor="#b968c77a"
-                        title="Registrarme"
+                        title="Register"
                         action={this.register.bind(this)}
                         iconName="user-plus"
                         iconColor="#fff"

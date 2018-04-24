@@ -13,16 +13,16 @@ export const Restaurant = t.struct({
 export const options = {
     fields: {
         name: {
-            label: 'Nombre (*)',
-            placeholder: 'Nombre'
+            label: 'Name (*)',
+            placeholder: 'Name'
         },
         description: {
-            label: 'Direccion (*)',
-            placeholder: 'Direccion'
+            label: 'Address (*)',
+            placeholder: 'Address'
         },
         capacity: {
-            label: 'Capacidad (*)',
-            help: 'Capacidad en personas',
+            label: 'Capacity (*)',
+            help: 'Capacity in people',
             config: {
                 step:1,
                 min: 1,
@@ -31,8 +31,8 @@ export const options = {
             template: sliderTemplate
         },
         description: {
-            label: 'Descripcion (*)',
-            placeholder: 'Descripcion',
+            label: 'Description (*)',
+            placeholder: 'Description',
             multiline: true,
             stylesheet: {
                 ...Form.stylesheet,

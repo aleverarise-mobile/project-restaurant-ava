@@ -32,7 +32,7 @@ export default class AddRestaurant extends Component {
             data[`restaurants/${key}`] = this.state.restaurant;
             firebase.database().ref().update(data)
                 .then( () => {
-                    Toast.showWithGravity('Restaurante Agregado', Toast.LONG, Toast.BOTTOM)
+                    Toast.showWithGravity('Restaurant Added', Toast.LONG, Toast.BOTTOM)
                     this.props.navigation.navigate('ListRestaurants')
                 })
                 .catch( error => {
@@ -48,9 +48,9 @@ export default class AddRestaurant extends Component {
     render() {
         const { restaurant } = this.state;
         return (
-            <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
+            <BackgroundImage source={require('../../../assets/images/fondo.png')}>
                 <View style={styles.container} >
-                    <Card title="Agregar Restaurante" >
+                    <Card title="Add Restaurant" >
                         <Form 
                             ref="form"
                             type={Restaurant}
@@ -60,7 +60,7 @@ export default class AddRestaurant extends Component {
                         />
                         <AppButtom 
                             bgColor="rgba(255, 38, 74, 0.9)"
-                            title="Guardar Restaurante"
+                            title="Save Restaurant"
                             action={this.save.bind(this)}
                             iconName="plus"
                             iconColor="#fff"
@@ -74,7 +74,6 @@ export default class AddRestaurant extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'rgba(231, 228,224, 0.8)',
         padding: 10
     }
 });

@@ -20,7 +20,7 @@ export default class Profile extends Component {
 
     componentDidMount() {
         this.fetch().then( () => {
-            Toast.showWithGravity('Usuario Obtenido', Toast.LONG, Toast.BOTTOM)
+            Toast.showWithGravity('User Obtained', Toast.LONG, Toast.BOTTOM)
         }).catch( (error) => {
             Toast.showWithGravity(error.message, Toast.LONG, Toast.BOTTOM)
         })     
@@ -51,9 +51,9 @@ export default class Profile extends Component {
                 age: this.state.user.age
             }
             await AsyncStorage.setItem('user', JSON.stringify(user));
-            Toast.showWithGravity('Usuario guardado correctamente', Toast.LONG, Toast.BOTTOM)
+            Toast.showWithGravity('User successfully saved', Toast.LONG, Toast.BOTTOM)
         } catch (error) {
-            Toast.showWithGravity('Error Guardando', Toast.LONG, Toast.BOTTOM)
+            Toast.showWithGravity('Error Saving', Toast.LONG, Toast.BOTTOM)
         }
     }
 
@@ -65,23 +65,23 @@ export default class Profile extends Component {
                 this.setState({user: parsed})
             }
         } catch (error) {
-            Toast.showWithGravity('Error Obteniendo', Toast.LONG, Toast.BOTTOM)
+            Toast.showWithGravity('Error Getting', Toast.LONG, Toast.BOTTOM)
         }
     }
     
     render() {
         const {user} = this.state;
         return (
-            <BackgroundImage source={require('../../assets/images/fondo.jpg')}>
-                <Card  title="Iniciar sesión" >
+            <BackgroundImage source={require('../../assets/images/fondo.png')}>
+                <Card  title="Local User Registration" >
                     <Input 
-                        placeholder="Nombre del usuario"
+                        placeholder="Name of the user"
                         shake={true}
                         value={user.name}
                         onChangeText={(val) => this.updateName(val)}
                     />
                     <Input 
-                        placeholder="Edad del usuario"
+                        placeholder="Age of the user"
                         shake={true}
                         value={user.age}
                         onChangeText={(val) => this.updateAge(val)}
@@ -90,7 +90,7 @@ export default class Profile extends Component {
                     <View style={{marginTop: 15}}>
                         <AppButton 
                             bgColor="rgba(200, 38, 74, 1)"
-                            title="Guardar en local"
+                            title="Save in local"
                             action={this.save.bind(this)}
                             iconName="save"
                             iconColor="#fff"

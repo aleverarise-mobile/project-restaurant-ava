@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import {Image} from 'react-native';
 import AppButton from '../AppButton';
 import { Card, Text, Avatar } from 'react-native-elements';
 import {View} from 'react-native';
 import RestaurantRating from './RestaurantRating';
-const imageUrl = require('../../../assets/images/logo.png');
 
 export default  class Restaurant extends Component {
     render() {
@@ -14,15 +14,18 @@ export default  class Restaurant extends Component {
                     title={restaurant.name}
                     
                 >
-                    <Avatar
-                        xlarge
-                        rounded
-                        icon={{name: 'restaurant', type: 'material-icons', color: 'rgb(200, 38, 74)'}}
-                        activeOpacity={0.7}
-                        containerStyle={{
-                            flexDirection: 'column', 
+                    <Image 
+                        source={require('../../../assets/images/logo.png')}
+                        style={{
+                            width: 180, 
+                            height: 180,
+                            flex: 1,
+                            marginLeft: '20%',
+                            marginBottom: 30,
+                            flexDirection: 'column',
                             justifyContent: 'center',
                             alignItems: 'center',
+                            resizeMode: Image.resizeMode.contain
                         }}
                     />
                     
@@ -34,7 +37,7 @@ export default  class Restaurant extends Component {
 
                     <AppButton 
                         bgColor="rgba(255, 38, 74, 0.8)"
-                        title="Editar Restaurante"
+                        title="Update Restaurant"
                         action={editRestaurant}
                         iconName="pencil"
                         iconColor="#fff"
@@ -42,7 +45,7 @@ export default  class Restaurant extends Component {
 
                     <AppButton 
                         bgColor="rgba(28, 25, 21, 0.8)"
-                        title="Volver"
+                        title="Back"
                         action={goHome}
                         iconName="arrow-left"
                         iconColor="#fff"

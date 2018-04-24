@@ -44,9 +44,9 @@ export default class EditRestaurant extends Component {
     render() {
         const {restaurant} = this.state;
         return (
-            <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
+            <BackgroundImage source={require('../../../assets/images/fondo.png')}>
                 <View style={styles.container} >
-                    <Card title="Editar Restaurante" >
+                    <Card title="Update Restaurant" >
                         <View> 
                             <Form 
                                 ref="form"
@@ -59,7 +59,7 @@ export default class EditRestaurant extends Component {
                         
                         <AppButton 
                             bgColor="rgba(255, 38, 74, 0.9)"
-                            title="Actualizar Restaurante"
+                            title="Update Restaurant"
                             action={this.update.bind(this)}
                             iconName="pencil"
                             iconColor="#fff"
