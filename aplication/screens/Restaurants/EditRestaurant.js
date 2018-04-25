@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BackgroundImage from '../../components/BackgroundImage';
 import AppButton from '../../components/AppButton';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import * as firebase from 'firebase';
 import {options, Restaurant} from '../../forms/restaurant';
 import t from 'tcomb-form-native';
@@ -45,27 +45,29 @@ export default class EditRestaurant extends Component {
         const {restaurant} = this.state;
         return (
             <BackgroundImage source={require('../../../assets/images/fondo.png')}>
-                <View style={styles.container} >
-                    <Card title="Update Restaurant" >
-                        <View> 
-                            <Form 
-                                ref="form"
-                                type={Restaurant}
-                                options={options}
-                                value={restaurant}
-                                onChange={ (v) => this.onChange(v) }
+                <ScrollView>
+                    <View style={styles.container} >
+                        <Card title="Update Restaurant" >
+                            <View> 
+                                <Form 
+                                    ref="form"
+                                    type={Restaurant}
+                                    options={options}
+                                    value={restaurant}
+                                    onChange={ (v) => this.onChange(v) }
+                                />
+                            </View>
+                            
+                            <AppButton 
+                                bgColor="rgba(255, 38, 74, 0.9)"
+                                title="Update Restaurant"
+                                action={this.update.bind(this)}
+                                iconName="pencil"
+                                iconColor="#fff"
                             />
-                        </View>
-                        
-                        <AppButton 
-                            bgColor="rgba(255, 38, 74, 0.9)"
-                            title="Update Restaurant"
-                            action={this.update.bind(this)}
-                            iconName="pencil"
-                            iconColor="#fff"
-                        />
-                    </Card>
-                </View>
+                        </Card>
+                    </View>
+                </ScrollView>
             </BackgroundImage>
         );
     }

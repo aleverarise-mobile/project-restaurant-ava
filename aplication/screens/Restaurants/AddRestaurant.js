@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BackgroundImage from '../../components/BackgroundImage';
 import AppButtom from '../../components/AppButton';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import * as firebase from 'firebase';
 import { options, Restaurant } from '../../forms/restaurant';
 import t from 'tcomb-form-native';
@@ -49,24 +49,26 @@ export default class AddRestaurant extends Component {
         const { restaurant } = this.state;
         return (
             <BackgroundImage source={require('../../../assets/images/fondo.png')}>
-                <View style={styles.container} >
-                    <Card title="Add Restaurant" >
-                        <Form 
-                            ref="form"
-                            type={Restaurant}
-                            options={options}
-                            value={restaurant}
-                            onChange={ (v) => this.onChange(v) }
-                        />
-                        <AppButtom 
-                            bgColor="rgba(255, 38, 74, 0.9)"
-                            title="Save Restaurant"
-                            action={this.save.bind(this)}
-                            iconName="plus"
-                            iconColor="#fff"
-                        />
-                    </Card>
-                </View>
+                <ScrollView>
+                    <View style={styles.container} >
+                        <Card title="Add Restaurant" >
+                            <Form 
+                                ref="form"
+                                type={Restaurant}
+                                options={options}
+                                value={restaurant}
+                                onChange={ (v) => this.onChange(v) }
+                            />
+                            <AppButtom 
+                                bgColor="rgba(255, 38, 74, 0.9)"
+                                title="Save Restaurant"
+                                action={this.save.bind(this)}
+                                iconName="plus"
+                                iconColor="#fff"
+                            />
+                        </Card>
+                    </View>
+                </ScrollView>
             </BackgroundImage>
         );
     }
