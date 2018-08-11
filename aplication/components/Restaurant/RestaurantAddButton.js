@@ -13,6 +13,7 @@ export default class RestaurantAddButton extends Component {
                     action={addRestaurant}
                     iconName='plus'
                     iconColor="#fff"
+                    setWidth={true}
                 />
             </View>
         );

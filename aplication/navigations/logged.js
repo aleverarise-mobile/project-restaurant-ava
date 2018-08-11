@@ -3,11 +3,12 @@ import RestaurantsScreen from '../screens/Restaurants/Restaurants';
 import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
 import DetailRestaurantScreen from '../screens/Restaurants/DetailRestaurant';
 import EditRestaurantScreen from '../screens/Restaurants/EditRestaurant';
+import ReviewsRestaurantScreen from '../screens/Restaurants/ReviewsRestaurant';
 
 import LogoutScreen from '../screens/Logout';
 import ProfileScreen from '../screens/Profile';
 
-import { DrawerNavigator, StackNavigator } from 'react-navigation';
+import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const navigationOptions = {
@@ -30,7 +31,7 @@ const leftIcon = (navigation, icon) => <Icon
     style={{marginLeft: 20}}
     size={20}
     color="white"
-    onPress={ () => navigation.navigate('DrawerOpen') }
+    onPress={ () => navigation.openDrawer('DrawerOpen') }
 />;
 
 const rightIcon = (navigation, icon) => <Icon 
@@ -41,14 +42,12 @@ const rightIcon = (navigation, icon) => <Icon
     onPress={ () => navigation.navigate('ListRestaurants') }
 />;
 
-const restaurantsScreenStack = StackNavigator(
+const restaurantsScreenStack = createStackNavigator(
     {
         ListRestaurants: {
             screen: RestaurantsScreen,
             navigationOptions: ( {navigation} ) => ({
                 title: 'Restaurants',
-                drawerIcon: ({ tintColor }) => (<Icon 
-                    name="home" size={24} style={{color: tintColor}} />),
                 headerLeft: leftIcon(navigation, 'bars')
             })
         },
@@ -79,14 +78,12 @@ const restaurantsScreenStack = StackNavigator(
     navigationOptions
 );
 
-const ProfileScreenStack = StackNavigator(
+const ProfileScreenStack = createStackNavigator(
     {
         ProfileScreen: {
             screen: ProfileScreen,
             navigationOptions: ({navigation}) => ({
                 title: 'Profile',
-                drawerIcon: ({ tintColor }) => (<Icon 
-                    name="user" size={24} style={{color: tintColor}} />),
                 headerLeft: leftIcon(navigation, 'bars'),
                 headerRight: rightIcon(navigation, 'home')
             })
@@ -95,29 +92,60 @@ const ProfileScreenStack = StackNavigator(
     navigationOptions
 )
 
-const logoutScreenStack = StackNavigator(
+const logoutScreenStack = createStackNavigator(
     {
         LogoutScreen:{
             screen: LogoutScreen,
             navigationOptions: ({ navigation }) => ({
                 title: 'Logout',
-                drawerIcon: ({ tintColor }) => (<Icon 
-                    name="sign-out" size={24} style={{color: tintColor}} />),
             })
         }   
     }
 );
 
-export default DrawerNavigator(
+const ReviewsRestaurantScreenStack = createStackNavigator(
+    {
+        ReviewsRestaurant:{
+            screen: ReviewsRestaurantScreen,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Valoraciones',
+                headerLeft: leftIcon(navigation, 'bars'),
+                headerRight: rightIcon(navigation, 'home')
+            })
+        }   
+    },
+    navigationOptions
+);
+
+export default createDrawerNavigator(
     {
         RestaurantsScreen:{
-            screen: restaurantsScreenStack
+            screen: restaurantsScreenStack,
+            navigationOptions: ({navigation}) => ({
+                drawerLabel: 'Restaurants',
+                drawerIcon: ({tintColor}) => (<Icon name="home" size={30} style={{color: tintColor}} />)
+            })
         },
         ProfileScreen:{
-            screen: ProfileScreenStack
+            screen: ProfileScreenStack,
+            navigationOptions: ({navigation}) => ({
+                drawerLabel: 'Profile',
+                drawerIcon: ({tintColor}) => (<Icon name="user" size={30} style={{color: tintColor}} />)
+            })
+        },
+        ReviewRestaurantScreen:{
+            screen: ReviewsRestaurantScreenStack,
+            navigationOptions: ({navigation}) => ({
+                drawerLabel: 'Reviews',
+                drawerIcon: ({tintColor}) => (<Icon name="comments" size={30} style={{color: tintColor}} />)
+            })
         },
         LogoutScreen:{
-            screen: logoutScreenStack
+            screen: logoutScreenStack,
+            navigationOptions: ({navigation}) => ({
+                drawerLabel: 'Logout',
+                drawerIcon: ({tintColor}) => (<Icon name="sign-out" size={30} style={{color: tintColor}} />)
+            })
         }
     },
     {
